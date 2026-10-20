@@ -1,0 +1,3183 @@
+{
+  "schemaVersion": "1.0.0",
+  "meta": {
+    "title": "智慧校园截图数据（含显式派生指标）",
+    "source": [
+      {
+        "id": "wxj1",
+        "fileName": "wxj1.png",
+        "relativePath": "docs/smart-campus/wxj1.png",
+        "sha256": "919ddaeafe5abaf20fe02835d101f9c85c82c5035fba07c7effb98a4961738e0",
+        "pixelSize": [
+          3322,
+          1750
+        ],
+        "description": "基础数据、访问曲线、模块安装、增长曲线"
+      },
+      {
+        "id": "wxj2",
+        "fileName": "wxj2.png",
+        "relativePath": "docs/smart-campus/wxj2.png",
+        "sha256": "ddec2d2394e9abdbb667535dd04a738ff491fc524049a056ed68bcb8eff78cb7",
+        "pixelSize": [
+          3328,
+          1772
+        ],
+        "description": "请假曲线、请假统计及学校表格可见部分"
+      },
+      {
+        "id": "wxj3",
+        "fileName": "wxj3.png",
+        "relativePath": "docs/smart-campus/wxj3.png",
+        "sha256": "58bbaa905a2814818b296ba588cf7fb7bc3fcccaf76885416e97b894b09c3871",
+        "pixelSize": [
+          3376,
+          1772
+        ],
+        "description": "学校活跃度、另一分类口径的学校数据及用户数据"
+      }
+    ],
+    "periods": {
+      "snapshot": {
+        "start": null,
+        "end": null,
+        "inclusive": null,
+        "description": "截图即时展示值；截屏时刻和指标统计截止时刻均未显示，不套用曲线日期。"
+      },
+      "visits7d": {
+        "start": "2026-10-09",
+        "end": "2026-10-15",
+        "inclusive": true,
+        "description": "wxj1访问及增长曲线横轴，共7天。"
+      },
+      "leave30d": {
+        "start": "2026-09-17",
+        "end": "2026-10-16",
+        "inclusive": true,
+        "description": "wxj2日期筛选范围，共30天；每日点按连续日序对应，部分日期刻度隔日显示。"
+      },
+      "activityUnknown": {
+        "start": null,
+        "end": null,
+        "inclusive": null,
+        "description": "wxj3活跃度统计时段未显示。"
+      }
+    },
+    "dataStatusDefinitions": {
+      "screenshot": "截图可读数字、标签或明确位于零基线的点；不意味着后台口径已获验证。",
+      "derived": "仅由注明的来源字段按公开公式计算，不覆盖原始读数。",
+      "simulated": "非正式数据，仅供参考！必须固定值且isSimulated为true；本版本不使用模拟。",
+      "missing": "未展示、遮挡或不能可靠确认的数值为null，不等同于0。"
+    },
+    "confidenceDefinitions": {
+      "high": "完整可读并人工核图",
+      "medium": "零基线、重叠标签或名称截断，已说明限制",
+      "low": "遮挡或未展示，不能作为精确数值"
+    },
+    "commonFields": {
+      "id": "数据集内稳定标识；不作为官方学校或用户ID。",
+      "rawLabel": "截图可见标签；保留省略号，不补齐学校名称。",
+      "schoolName": "仅完整可读时填写；截断或遮挡时为null，不自动关联主数据。",
+      "rawScore": "截图原始数字文字；遮挡行仅存可辨候选文字，不是可计算分值。",
+      "date": "ISO日期；遵循所属period，不从文件修改时间推算。",
+      "displayOrder": "可见网格按从左到右、从上到下的顺序，不宣称全区完整排名。",
+      "dataStatus": "行内数值字段状态；rawLabel/rawScore是文字证据，不参与数值计算。",
+      "confidence": "行内数值可信度，标签另见labelConfidence。",
+      "labelConfidence": "标签完整性与人工阅读可信度。",
+      "source": "meta.source中的截图ID；生成文件每行补齐截图来源及region。",
+      "sourceRef": "生成行到本来源文件的JSON Pointer，用于回溯人工记录。",
+      "derivedFrom": "派生行依赖的来源文件JSON Pointer，可指向输入数值或完整输入行。",
+      "fields": "数据集数值字段字典；单位、公式、聚合限制和适用图表均在此声明。",
+      "isSimulated": "生成文件每行显式写入；本版本全部false。"
+    },
+    "policies": [
+      "独立截图数据产物，不读取或覆盖现有主数据生成器、UI及学校主数据，不含个人信息。",
+      "来源和生成文件均为离线JSON；不访问网络，不自动识别截图，不按人数比例模拟角色拆分。",
+      "百分数采用0至100的百分比数值；派生比率使用十进制四舍五入保留2位小数。",
+      "原图无公式的指标formula为null；派生公式只在生成文件对应fields内提供。",
+      "学校分类分别保存；模块仅代表安装统计；活跃度分值不是访问量。",
+      "未展示的角色、去重访问人数、增长关注数及遮挡精确分值保留null；不添加无依据模拟。"
+    ],
+    "uncertainties": [
+      {
+        "id": "classification-scope",
+        "source": [
+          "wxj1",
+          "wxj3"
+        ],
+        "datasets": [
+          "schoolCategoriesWxj1",
+          "schoolCategoriesWxj3"
+        ],
+        "message": "两种分类均合计39，但初中11与8等口径不同。wxj3另列九年制3、十二年制1；不将两表合并，不推断学校对应关系，也不把未列出的高中当作0。"
+      },
+      {
+        "id": "leave-count-definition",
+        "source": [
+          "wxj2"
+        ],
+        "datasets": [
+          "leaveSummary",
+          "leaveDaily",
+          "leaveSchools"
+        ],
+        "message": "全区老师共计请假455人、学生418人；不是全区教师/学生基数，也不是累计人次。去重、跨日及审批口径未知，与逐日曲线点值之和不一致。原值和差额分别保留，不强制配平。"
+      },
+      {
+        "id": "leave-zero-baseline",
+        "source": [
+          "wxj2"
+        ],
+        "datasets": [
+          "leaveDaily"
+        ],
+        "message": "没有数字标签的零值来自曲线点落在明确的0刻度基线，并非缺失补0。9/20、10/10的两色标签重叠，放大核对为教师29/学生31、教师40/学生41。"
+      },
+      {
+        "id": "growth-followers-scale",
+        "source": [
+          "wxj1"
+        ],
+        "datasets": [
+          "growthFollowers"
+        ],
+        "message": "图例写用户关注数量(千人)，青色线无数据标签，其纵轴位置与28901人量级不一致。不能由像素读成精确人数，也不能用28901复制填平，全部保留null。"
+      },
+      {
+        "id": "activity-labels-clipped",
+        "source": [
+          "wxj3"
+        ],
+        "datasets": [
+          "schoolActivity"
+        ],
+        "message": "第2、7、10行名称带省略号，schoolName为null。末2行被底部常用入口区域遮住下半截；rawScore候选文字5126、4462仅供复核，score为null，名称不作正式匹配。"
+      },
+      {
+        "id": "pv-third-verified",
+        "source": [
+          "wxj1"
+        ],
+        "datasets": [
+          "visitsDaily"
+        ],
+        "message": "2026-10-11紫色PV标签与折线接近，经局部放大核对为1375，青色UV为479。"
+      },
+      {
+        "id": "module-coverage-assumption",
+        "source": [
+          "wxj1"
+        ],
+        "datasets": [
+          "moduleInstallations"
+        ],
+        "message": "安装覆盖率按每个模块的图示安装数除以39个学校/机构计算，仅为按平台基数的展示比率；截图未解释机构适用范围和安装去重机制，不代表真实使用率。"
+      }
+    ],
+    "gaps": [
+      {
+        "id": "role-values-not-shown",
+        "source": [
+          "wxj1",
+          "wxj3"
+        ],
+        "datasets": [
+          "roleBreakdown"
+        ],
+        "message": "截图仅激活用户页签；老师、学生、家长用户数、关注数、关注比例均未展开。78.71%不能反推各角色人数。"
+      },
+      {
+        "id": "period-uv-not-shown",
+        "source": [
+          "wxj1"
+        ],
+        "datasets": [
+          "visitsDeduplicated"
+        ],
+        "message": "只有每日UV，没有跨日用户标识或7天去重值；日UV相加仅为人日，不能称7天独立访客人数。"
+      },
+      {
+        "id": "partial-module-window",
+        "source": [
+          "wxj1"
+        ],
+        "datasets": [
+          "moduleInstallations"
+        ],
+        "message": "水平滚动窗口仅显示13个模块；不宣称平台模块总数为13。导航入口不等于安装标签，也没有应用使用量、使用人数或使用率。"
+      },
+      {
+        "id": "partial-school-table",
+        "source": [
+          "wxj2"
+        ],
+        "datasets": [
+          "leaveSchools"
+        ],
+        "message": "仅4行可见；不能由此推断其他学校请假数或全区完整排名。第4行底边被裁切，但名称和两列数字可读。"
+      },
+      {
+        "id": "partial-activity-window",
+        "source": [
+          "wxj3"
+        ],
+        "datasets": [
+          "schoolActivity"
+        ],
+        "message": "只收录12条可见记录，其中10个分值完全可读；未显示全量学校、分值算法、分值单位和统计时段。"
+      },
+      {
+        "id": "snapshot-time-unknown",
+        "source": [
+          "wxj1",
+          "wxj2",
+          "wxj3"
+        ],
+        "datasets": [
+          "overview",
+          "overviewWxj3",
+          "schoolActivity"
+        ],
+        "message": "概览/活跃度未显示统计时刻；不能将曲线日期或图片文件时间当作概览截止时间。"
+      }
+    ],
+    "generation": {
+      "sourceFile": "data/smart-campus.source.json",
+      "sourceSha256": "84a81eb1ca2e68195fa2711f35d6ed36a52d96193ad5df8d1258950d7090cd8e",
+      "generator": "scripts/build-smart-campus-data.py",
+      "generatorSha256": "e4850dd94a002abb045e0b413477e5ae354298578fc792c3065fdafd3cf9f16c",
+      "deterministic": true,
+      "generatedAt": null,
+      "note": "无运行时间戳、随机数或外部依赖；相同来源和生成器产生完全相同字节。数值字段见各数据集fields。"
+    }
+  },
+  "datasets": {
+    "overview": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "学校数据；用户关注数据（用户页签）",
+      "period": "snapshot",
+      "scope": "平台学校/机构和全部用户概览",
+      "fields": {
+        "schoolCount": {
+          "type": "integer",
+          "description": "学校数量，原表分类包括局机关。",
+          "unit": "个学校/机构",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "kpi"
+          ]
+        },
+        "userCount": {
+          "type": "integer",
+          "description": "用户总数。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "kpi"
+          ]
+        },
+        "followerCount": {
+          "type": "integer",
+          "description": "用户关注数。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "kpi",
+            "donut"
+          ]
+        },
+        "followerRatePct": {
+          "type": "number",
+          "description": "截图总关注比例，保留原始百分数。",
+          "unit": "%",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "kpi",
+            "gauge"
+          ]
+        },
+        "teacherStudentFollowerRatePct": {
+          "type": "number",
+          "description": "师生关注比例，分子分母人数未展示，不能拆成各角色比例。",
+          "unit": "%",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "gauge",
+            "donut"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "all",
+          "schoolCount": 39,
+          "userCount": 45333,
+          "followerCount": 28901,
+          "followerRatePct": 63.75,
+          "teacherStudentFollowerRatePct": 78.71,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校数据；用户关注数据（用户页签）",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/overview/rows/0",
+          "isSimulated": false
+        }
+      ]
+    },
+    "overviewWxj3": {
+      "source": [
+        "wxj3"
+      ],
+      "region": "右侧学校数据及用户数据（用户页签）",
+      "period": "snapshot",
+      "scope": "另图重复概览，仅用于交叉核对，不与wxj1相加",
+      "fields": {
+        "schoolCount": {
+          "type": "integer",
+          "description": "学校数量，作为另一截图的独立读数。",
+          "unit": "个学校/机构",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        },
+        "userCount": {
+          "type": "integer",
+          "description": "用户总数，独立重复读数。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        },
+        "followerCount": {
+          "type": "integer",
+          "description": "关注数，独立重复读数。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        },
+        "followerRatePct": {
+          "type": "number",
+          "description": "关注比例，独立重复读数。",
+          "unit": "%",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "all",
+          "schoolCount": 39,
+          "userCount": 45333,
+          "followerCount": 28901,
+          "followerRatePct": 63.75,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj3"
+          ],
+          "region": "右侧学校数据及用户数据（用户页签）",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/overviewWxj3/rows/0",
+          "isSimulated": false
+        }
+      ]
+    },
+    "schoolCategoriesWxj1": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "顶部学校数据",
+      "period": "snapshot",
+      "scope": "wxj1独立分类口径；包含明确显示为0的大中专",
+      "fields": {
+        "count": {
+          "type": "integer",
+          "description": "该分类的学校/机构数量，只在本表内可加总。",
+          "unit": "个学校/机构",
+          "formula": null,
+          "aggregation": "withinDataset",
+          "charts": [
+            "bar",
+            "donut"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "kindergarten",
+          "rawLabel": "幼儿园",
+          "count": 6,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "顶部学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "primary",
+          "rawLabel": "小学",
+          "count": 19,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "顶部学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "junior",
+          "rawLabel": "初中",
+          "count": 11,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "顶部学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "senior",
+          "rawLabel": "高中",
+          "count": 1,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "顶部学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/3",
+          "isSimulated": false
+        },
+        {
+          "id": "college",
+          "rawLabel": "大中专",
+          "count": 0,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "顶部学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/4",
+          "isSimulated": false
+        },
+        {
+          "id": "bureau",
+          "rawLabel": "局机关",
+          "count": 1,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "顶部学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/5",
+          "isSimulated": false
+        },
+        {
+          "id": "special",
+          "rawLabel": "特殊学校",
+          "count": 1,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "顶部学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/6",
+          "isSimulated": false
+        }
+      ]
+    },
+    "schoolCategoriesWxj3": {
+      "source": [
+        "wxj3"
+      ],
+      "region": "右上学校数据",
+      "period": "snapshot",
+      "scope": "wxj3独立分类口径；不从顶部高中页签推断高中数",
+      "fields": {
+        "count": {
+          "type": "integer",
+          "description": "该分类的学校/机构数量，不和wxj1分类合并。",
+          "unit": "个学校/机构",
+          "formula": null,
+          "aggregation": "withinDataset",
+          "charts": [
+            "bar",
+            "donut"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "kindergarten",
+          "rawLabel": "幼儿园",
+          "count": 6,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj3"
+          ],
+          "region": "右上学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "primary",
+          "rawLabel": "小学",
+          "count": 19,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj3"
+          ],
+          "region": "右上学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "junior",
+          "rawLabel": "初中",
+          "count": 8,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj3"
+          ],
+          "region": "右上学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "bureau",
+          "rawLabel": "局机关",
+          "count": 1,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj3"
+          ],
+          "region": "右上学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/3",
+          "isSimulated": false
+        },
+        {
+          "id": "special",
+          "rawLabel": "特殊学校",
+          "count": 1,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj3"
+          ],
+          "region": "右上学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/4",
+          "isSimulated": false
+        },
+        {
+          "id": "nineYear",
+          "rawLabel": "九年制",
+          "count": 3,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj3"
+          ],
+          "region": "右上学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/5",
+          "isSimulated": false
+        },
+        {
+          "id": "twelveYear",
+          "rawLabel": "十二年制",
+          "count": 1,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj3"
+          ],
+          "region": "右上学校数据",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/6",
+          "isSimulated": false
+        }
+      ]
+    },
+    "roleBreakdown": {
+      "source": [
+        "wxj1",
+        "wxj3"
+      ],
+      "region": "老师、学生、家长未激活页签",
+      "period": "snapshot",
+      "scope": "未展示的用户角色拆分，禁止按比例填充",
+      "fields": {
+        "userCount": {
+          "type": "integer",
+          "description": "角色用户数未展示。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "table"
+          ]
+        },
+        "followerCount": {
+          "type": "integer",
+          "description": "角色关注数未展示。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "table"
+          ]
+        },
+        "followerRatePct": {
+          "type": "number",
+          "description": "角色关注比例未展示。",
+          "unit": "%",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "table"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "teachers",
+          "rawLabel": "老师",
+          "userCount": null,
+          "followerCount": null,
+          "followerRatePct": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "未展开页签；不能用请假人数或78.71%反推。",
+          "source": [
+            "wxj1",
+            "wxj3"
+          ],
+          "region": "老师、学生、家长未激活页签",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/roleBreakdown/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "students",
+          "rawLabel": "学生",
+          "userCount": null,
+          "followerCount": null,
+          "followerRatePct": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "未展开页签；不按用户总数分配。",
+          "source": [
+            "wxj1",
+            "wxj3"
+          ],
+          "region": "老师、学生、家长未激活页签",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/roleBreakdown/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "parents",
+          "rawLabel": "家长",
+          "userCount": null,
+          "followerCount": null,
+          "followerRatePct": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "未展开页签；不按用户总数分配。",
+          "source": [
+            "wxj1",
+            "wxj3"
+          ],
+          "region": "老师、学生、家长未激活页签",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/roleBreakdown/rows/2",
+          "isSimulated": false
+        }
+      ]
+    },
+    "visitsDaily": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "用户访问曲线",
+      "period": "visits7d",
+      "scope": "全部用户的7天每日访问读数",
+      "fields": {
+        "pv": {
+          "type": "integer",
+          "description": "每日访问次数PV，可求区间访问次数合计。",
+          "unit": "次",
+          "formula": null,
+          "aggregation": "sumWithinPeriod",
+          "charts": [
+            "line",
+            "bar"
+          ]
+        },
+        "uv": {
+          "type": "integer",
+          "description": "每日访问人数UV；跨日可能重复，相加只能称人日。",
+          "unit": "人/日",
+          "formula": null,
+          "aggregation": "personDaysOnly",
+          "charts": [
+            "line",
+            "bar"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "2026-10-09",
+          "date": "2026-10-09",
+          "pv": 5769,
+          "uv": 1322,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "用户访问曲线",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/visitsDaily/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-10",
+          "date": "2026-10-10",
+          "pv": 7251,
+          "uv": 1586,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "用户访问曲线",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/visitsDaily/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-11",
+          "date": "2026-10-11",
+          "pv": 1375,
+          "uv": 479,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "note": "局部放大确认紫色数字1375。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "用户访问曲线",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/visitsDaily/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-12",
+          "date": "2026-10-12",
+          "pv": 10207,
+          "uv": 2723,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "用户访问曲线",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/visitsDaily/rows/3",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-13",
+          "date": "2026-10-13",
+          "pv": 4940,
+          "uv": 1149,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "用户访问曲线",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/visitsDaily/rows/4",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-14",
+          "date": "2026-10-14",
+          "pv": 4661,
+          "uv": 1113,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "用户访问曲线",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/visitsDaily/rows/5",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-15",
+          "date": "2026-10-15",
+          "pv": 5257,
+          "uv": 1197,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "用户访问曲线",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/visitsDaily/rows/6",
+          "isSimulated": false
+        }
+      ]
+    },
+    "visitsDeduplicated": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "用户访问曲线（仅每日UV）",
+      "period": "visits7d",
+      "scope": "区间去重人数缺失",
+      "fields": {
+        "uniqueVisitors7d": {
+          "type": "integer",
+          "description": "7天跨日去重访客数未展示，不等于每日UV之和。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "kpi"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "all",
+          "uniqueVisitors7d": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "缺少跨日去重依据。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "用户访问曲线（仅每日UV）",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/visitsDeduplicated/rows/0",
+          "isSimulated": false
+        }
+      ]
+    },
+    "moduleInstallations": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "模块安装统计当前水平滚动窗口",
+      "period": "snapshot",
+      "scope": "仅13根可见柱，不是应用使用情况或完整模块清单",
+      "fields": {
+        "installedSchools": {
+          "type": "integer",
+          "description": "图示模块安装数；覆盖率以39个学校/机构为展示分母。不是调用次数或活跃用户。",
+          "unit": "个学校/机构（按图示安装数）",
+          "formula": null,
+          "aggregation": "schoolModulePairsOnly",
+          "charts": [
+            "bar",
+            "table"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "notice",
+          "rawLabel": "通知公告",
+          "installedSchools": 34,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "questionnaire",
+          "rawLabel": "问卷",
+          "installedSchools": 28,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "term",
+          "rawLabel": "学期管理",
+          "installedSchools": 27,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "salary",
+          "rawLabel": "工资管理",
+          "installedSchools": 27,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/3",
+          "isSimulated": false
+        },
+        {
+          "id": "repair",
+          "rawLabel": "报修",
+          "installedSchools": 26,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/4",
+          "isSimulated": false
+        },
+        {
+          "id": "organization",
+          "rawLabel": "用户组织",
+          "installedSchools": 25,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/5",
+          "isSimulated": false
+        },
+        {
+          "id": "studentLeave",
+          "rawLabel": "学生请假",
+          "installedSchools": 24,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/6",
+          "isSimulated": false
+        },
+        {
+          "id": "teacherLeaveV3",
+          "rawLabel": "老师请假版本三",
+          "installedSchools": 20,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/7",
+          "isSimulated": false
+        },
+        {
+          "id": "districtQuestionnaire",
+          "rawLabel": "区问卷插件",
+          "installedSchools": 19,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/8",
+          "isSimulated": false
+        },
+        {
+          "id": "schoolCurriculum",
+          "rawLabel": "校本课程平台",
+          "installedSchools": 17,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/9",
+          "isSimulated": false
+        },
+        {
+          "id": "leadership",
+          "rawLabel": "领导看板",
+          "installedSchools": 17,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/10",
+          "isSimulated": false
+        },
+        {
+          "id": "attendanceV1",
+          "rawLabel": "考勤（版本一）",
+          "installedSchools": 16,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/11",
+          "isSimulated": false
+        },
+        {
+          "id": "dutyInspectionV2",
+          "rawLabel": "护导检查版本二",
+          "installedSchools": 16,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "模块安装统计当前水平滚动窗口",
+          "period": "snapshot",
+          "sourceRef": "data/smart-campus.source.json#/datasets/moduleInstallations/rows/12",
+          "isSimulated": false
+        }
+      ]
+    },
+    "leaveSummary": {
+      "source": [
+        "wxj2"
+      ],
+      "region": "请假统计文字汇总",
+      "period": "leave30d",
+      "scope": "截图显示的请假人数，去重和跨日规则未知；不是累计人次或角色用户基数",
+      "fields": {
+        "teacherPeople": {
+          "type": "integer",
+          "description": "全区老师共计请假人数，保持截图显示口径。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "kpi",
+            "audit"
+          ]
+        },
+        "studentPeople": {
+          "type": "integer",
+          "description": "全区学生共计请假人数，保持截图显示口径。",
+          "unit": "人",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "kpi",
+            "audit"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "all",
+          "teacherPeople": 455,
+          "studentPeople": 418,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "note": "原文：全区老师共计请假：455人；全区学生共计请假：418人。",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假统计文字汇总",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveSummary/rows/0",
+          "isSimulated": false
+        }
+      ]
+    },
+    "leaveDaily": {
+      "source": [
+        "wxj2"
+      ],
+      "region": "请假曲线，红色教师、蓝色学生",
+      "period": "leave30d",
+      "scope": "30天每日曲线点；没有说明按日去重、申请单数还是跨日请假人数",
+      "fields": {
+        "teacher": {
+          "type": "integer",
+          "description": "红色教师每日点值；仅供还原折线。",
+          "unit": "图示日点值（人数口径未明）",
+          "formula": null,
+          "aggregation": "pointSumOnly",
+          "charts": [
+            "line"
+          ]
+        },
+        "student": {
+          "type": "integer",
+          "description": "蓝色学生每日点值；不得把点值之和宣称累计请假人次。",
+          "unit": "图示日点值（人数口径未明）",
+          "formula": null,
+          "aggregation": "pointSumOnly",
+          "charts": [
+            "line"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "2026-09-17",
+          "date": "2026-09-17",
+          "teacher": 64,
+          "student": 37,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-18",
+          "date": "2026-09-18",
+          "teacher": 69,
+          "student": 36,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-19",
+          "date": "2026-09-19",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-20",
+          "date": "2026-09-20",
+          "teacher": 29,
+          "student": 31,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "overlapping-numeric-labels",
+          "note": "放大核对红色29、蓝色31，蓝点略高于红点。",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/3",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-21",
+          "date": "2026-09-21",
+          "teacher": 44,
+          "student": 37,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/4",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-22",
+          "date": "2026-09-22",
+          "teacher": 51,
+          "student": 31,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/5",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-23",
+          "date": "2026-09-23",
+          "teacher": 68,
+          "student": 44,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/6",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-24",
+          "date": "2026-09-24",
+          "teacher": 72,
+          "student": 38,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/7",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-25",
+          "date": "2026-09-25",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/8",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-26",
+          "date": "2026-09-26",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/9",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-27",
+          "date": "2026-09-27",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/10",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-28",
+          "date": "2026-09-28",
+          "teacher": 68,
+          "student": 59,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/11",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-29",
+          "date": "2026-09-29",
+          "teacher": 71,
+          "student": 63,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/12",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-09-30",
+          "date": "2026-09-30",
+          "teacher": 66,
+          "student": 85,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/13",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-01",
+          "date": "2026-10-01",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/14",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-02",
+          "date": "2026-10-02",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/15",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-03",
+          "date": "2026-10-03",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/16",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-04",
+          "date": "2026-10-04",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/17",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-05",
+          "date": "2026-10-05",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/18",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-06",
+          "date": "2026-10-06",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/19",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-07",
+          "date": "2026-10-07",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/20",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-08",
+          "date": "2026-10-08",
+          "teacher": 40,
+          "student": 36,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/21",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-09",
+          "date": "2026-10-09",
+          "teacher": 61,
+          "student": 38,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/22",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-10",
+          "date": "2026-10-10",
+          "teacher": 40,
+          "student": 41,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "overlapping-numeric-labels",
+          "note": "放大核对红色40、蓝色41，蓝点略高于红点。",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/23",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-11",
+          "date": "2026-10-11",
+          "teacher": 0,
+          "student": 0,
+          "dataStatus": "screenshot",
+          "confidence": "medium",
+          "evidence": "zero-baseline",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/24",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-12",
+          "date": "2026-10-12",
+          "teacher": 48,
+          "student": 35,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/25",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-13",
+          "date": "2026-10-13",
+          "teacher": 80,
+          "student": 51,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/26",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-14",
+          "date": "2026-10-14",
+          "teacher": 43,
+          "student": 46,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/27",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-15",
+          "date": "2026-10-15",
+          "teacher": 43,
+          "student": 49,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/28",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-16",
+          "date": "2026-10-16",
+          "teacher": 38,
+          "student": 53,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "evidence": "numeric-labels",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假曲线，红色教师、蓝色学生",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveDaily/rows/29",
+          "isSimulated": false
+        }
+      ]
+    },
+    "leaveSchools": {
+      "source": [
+        "wxj2"
+      ],
+      "region": "请假统计学校表格前4行",
+      "period": "leave30d",
+      "scope": "仅可见学校，非全量；学校名称不与其他截图截断名称自动归并",
+      "fields": {
+        "teacherPeople": {
+          "type": "integer",
+          "description": "学校表格老师列读数；去重口径未知。",
+          "unit": "人（表格展示）",
+          "formula": null,
+          "aggregation": "visibleRowsOnly",
+          "charts": [
+            "table",
+            "bar"
+          ]
+        },
+        "studentPeople": {
+          "type": "integer",
+          "description": "学校表格学生列读数；去重口径未知。",
+          "unit": "人（表格展示）",
+          "formula": null,
+          "aggregation": "visibleRowsOnly",
+          "charts": [
+            "table",
+            "bar"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "visible-01",
+          "rawLabel": "金陵中学建邺实验学校（小学部）",
+          "schoolName": "金陵中学建邺实验学校（小学部）",
+          "schoolType": "小学",
+          "teacherPeople": 57,
+          "studentPeople": 2,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假统计学校表格前4行",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveSchools/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-02",
+          "rawLabel": "南京外国语学校青奥村小学",
+          "schoolName": "南京外国语学校青奥村小学",
+          "schoolType": "小学",
+          "teacherPeople": 82,
+          "studentPeople": 6,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假统计学校表格前4行",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveSchools/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-03",
+          "rawLabel": "新城小学",
+          "schoolName": "新城小学",
+          "schoolType": "小学",
+          "teacherPeople": 42,
+          "studentPeople": 6,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假统计学校表格前4行",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveSchools/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-04",
+          "rawLabel": "新城南校安心驿站",
+          "schoolName": "新城南校安心驿站",
+          "schoolType": "小学",
+          "teacherPeople": 71,
+          "studentPeople": 1,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "note": "行底边裁切，名称与老师71、学生1均可读。",
+          "source": [
+            "wxj2"
+          ],
+          "region": "请假统计学校表格前4行",
+          "period": "leave30d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/leaveSchools/rows/3",
+          "isSimulated": false
+        }
+      ]
+    },
+    "schoolActivity": {
+      "source": [
+        "wxj3"
+      ],
+      "region": "学校活跃度双列网格可见区域",
+      "period": "activityUnknown",
+      "scope": "12条可见记录，10个完整分值；不补齐截断名称，不宣称全区完整榜单",
+      "fields": {
+        "score": {
+          "type": "integer",
+          "description": "图示学校活跃度分值；公式和官方单位未说明，不能当访问人数或次数。",
+          "unit": "图示分值（官方单位未明）",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "bar",
+            "table"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "visible-01",
+          "displayOrder": 1,
+          "rawLabel": "南京致远外国语小学",
+          "schoolName": "南京致远外国语小学",
+          "score": 21855,
+          "rawScore": "21855",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "isTruncated": false,
+          "isOccluded": false,
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-02",
+          "displayOrder": 2,
+          "rawLabel": "南京师范大学附属中学邺城...",
+          "schoolName": null,
+          "score": 16926,
+          "rawScore": "16926",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "medium",
+          "isTruncated": true,
+          "isOccluded": false,
+          "note": "名称省略号保留，不补齐。",
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-03",
+          "displayOrder": 3,
+          "rawLabel": "南京师大附中新城初级中学",
+          "schoolName": "南京师大附中新城初级中学",
+          "score": 14626,
+          "rawScore": "14626",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "isTruncated": false,
+          "isOccluded": false,
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-04",
+          "displayOrder": 4,
+          "rawLabel": "新城小学",
+          "schoolName": "新城小学",
+          "score": 12573,
+          "rawScore": "12573",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "isTruncated": false,
+          "isOccluded": false,
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/3",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-05",
+          "displayOrder": 5,
+          "rawLabel": "南京外国语学校青奥村小学",
+          "schoolName": "南京外国语学校青奥村小学",
+          "score": 12261,
+          "rawScore": "12261",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "isTruncated": false,
+          "isOccluded": false,
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/4",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-06",
+          "displayOrder": 6,
+          "rawLabel": "新城南校安心驿站",
+          "schoolName": "新城南校安心驿站",
+          "score": 10314,
+          "rawScore": "10314",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "isTruncated": false,
+          "isOccluded": false,
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/5",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-07",
+          "displayOrder": 7,
+          "rawLabel": "金陵中学建邺实验学校（小...",
+          "schoolName": null,
+          "score": 9372,
+          "rawScore": "9372",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "medium",
+          "isTruncated": true,
+          "isOccluded": false,
+          "note": "即使其他截图存在相似全称，也不将其自动匹配。",
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/6",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-08",
+          "displayOrder": 8,
+          "rawLabel": "南师附中栋梁学校",
+          "schoolName": "南师附中栋梁学校",
+          "score": 6991,
+          "rawScore": "6991",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "isTruncated": false,
+          "isOccluded": false,
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/7",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-09",
+          "displayOrder": 9,
+          "rawLabel": "新城小学怡康街分校",
+          "schoolName": "新城小学怡康街分校",
+          "score": 6288,
+          "rawScore": "6288",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "high",
+          "isTruncated": false,
+          "isOccluded": false,
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/8",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-10",
+          "displayOrder": 10,
+          "rawLabel": "南京师范大学附属中学黄山...",
+          "schoolName": null,
+          "score": 5547,
+          "rawScore": "5547",
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "labelConfidence": "medium",
+          "isTruncated": true,
+          "isOccluded": false,
+          "note": "名称省略号保留，不补齐。",
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/9",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-11",
+          "displayOrder": 11,
+          "rawLabel": "南京市文泰街幼儿园",
+          "schoolName": null,
+          "score": null,
+          "rawScore": "5126",
+          "dataStatus": "missing",
+          "confidence": "low",
+          "labelConfidence": "low",
+          "isTruncated": false,
+          "isOccluded": true,
+          "note": "名称和分值下半截被挡；rawLabel及rawScore仅为上半截可辨候选文字，不是已确认的完整名称或精确分值。",
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/10",
+          "isSimulated": false
+        },
+        {
+          "id": "visible-12",
+          "displayOrder": 12,
+          "rawLabel": "南京市莲花实验学校",
+          "schoolName": null,
+          "score": null,
+          "rawScore": "4462",
+          "dataStatus": "missing",
+          "confidence": "low",
+          "labelConfidence": "low",
+          "isTruncated": false,
+          "isOccluded": true,
+          "note": "名称和分值下半截被挡；rawLabel及rawScore仅为上半截可辨候选文字，不是已确认的完整名称或精确分值。",
+          "source": [
+            "wxj3"
+          ],
+          "region": "学校活跃度双列网格可见区域",
+          "period": "activityUnknown",
+          "sourceRef": "data/smart-campus.source.json#/datasets/schoolActivity/rows/11",
+          "isSimulated": false
+        }
+      ]
+    },
+    "growthSchools": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "学校接入和用户关注变化曲线，紫色学校数量标签",
+      "period": "visits7d",
+      "scope": "各日学校数量存量，不是每日新增学校数",
+      "fields": {
+        "schoolCount": {
+          "type": "integer",
+          "description": "每个日期均有39的文字标签，不跨日累加。",
+          "unit": "个学校/机构",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "line"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "2026-10-09",
+          "date": "2026-10-09",
+          "schoolCount": 39,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，紫色学校数量标签",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthSchools/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-10",
+          "date": "2026-10-10",
+          "schoolCount": 39,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，紫色学校数量标签",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthSchools/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-11",
+          "date": "2026-10-11",
+          "schoolCount": 39,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，紫色学校数量标签",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthSchools/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-12",
+          "date": "2026-10-12",
+          "schoolCount": 39,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，紫色学校数量标签",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthSchools/rows/3",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-13",
+          "date": "2026-10-13",
+          "schoolCount": 39,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，紫色学校数量标签",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthSchools/rows/4",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-14",
+          "date": "2026-10-14",
+          "schoolCount": 39,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，紫色学校数量标签",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthSchools/rows/5",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-15",
+          "date": "2026-10-15",
+          "schoolCount": 39,
+          "dataStatus": "screenshot",
+          "confidence": "high",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，紫色学校数量标签",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthSchools/rows/6",
+          "isSimulated": false
+        }
+      ]
+    },
+    "growthFollowers": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "学校接入和用户关注变化曲线，青色用户关注数量(千人)",
+      "period": "visits7d",
+      "scope": "保留原图图例单位但不读取无数字标签的青色线为精确值",
+      "fields": {
+        "followersThousands": {
+          "type": "number",
+          "description": "图例单位千人，但与概览28901人量级不一致且没有数字标签，故缺失。",
+          "unit": "千人（原图图例）",
+          "formula": null,
+          "aggregation": "none",
+          "charts": [
+            "line"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "2026-10-09",
+          "date": "2026-10-09",
+          "followersThousands": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "无数字标签，量级矛盾。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，青色用户关注数量(千人)",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthFollowers/rows/0",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-10",
+          "date": "2026-10-10",
+          "followersThousands": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "无数字标签，量级矛盾。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，青色用户关注数量(千人)",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthFollowers/rows/1",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-11",
+          "date": "2026-10-11",
+          "followersThousands": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "无数字标签，量级矛盾。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，青色用户关注数量(千人)",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthFollowers/rows/2",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-12",
+          "date": "2026-10-12",
+          "followersThousands": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "无数字标签，量级矛盾。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，青色用户关注数量(千人)",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthFollowers/rows/3",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-13",
+          "date": "2026-10-13",
+          "followersThousands": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "无数字标签，量级矛盾。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，青色用户关注数量(千人)",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthFollowers/rows/4",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-14",
+          "date": "2026-10-14",
+          "followersThousands": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "无数字标签，量级矛盾。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，青色用户关注数量(千人)",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthFollowers/rows/5",
+          "isSimulated": false
+        },
+        {
+          "id": "2026-10-15",
+          "date": "2026-10-15",
+          "followersThousands": null,
+          "dataStatus": "missing",
+          "confidence": "low",
+          "note": "无数字标签，量级矛盾。",
+          "source": [
+            "wxj1"
+          ],
+          "region": "学校接入和用户关注变化曲线，青色用户关注数量(千人)",
+          "period": "visits7d",
+          "sourceRef": "data/smart-campus.source.json#/datasets/growthFollowers/rows/6",
+          "isSimulated": false
+        }
+      ]
+    },
+    "overviewDerived": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "派生计算；输入区域见derivedFrom指向的来源数据集",
+      "period": "snapshot",
+      "scope": "仅对用户概览进行算术补充，不生成角色拆分",
+      "fields": {
+        "unfollowedCount": {
+          "type": "integer",
+          "description": "未关注人数。",
+          "unit": "人",
+          "formula": "overview.userCount - overview.followerCount",
+          "aggregation": "none",
+          "charts": [
+            "kpi",
+            "donut"
+          ]
+        },
+        "followerRateCalculatedPct": {
+          "type": "number",
+          "description": "用于核对原图63.75%，不覆盖原图比例。",
+          "unit": "%",
+          "formula": "roundHalfUp(overview.followerCount / overview.userCount * 100, 2)",
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "all",
+          "unfollowedCount": 16432,
+          "followerRateCalculatedPct": 63.75,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/overview/rows/0/userCount",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/followerCount"
+          ]
+        }
+      ]
+    },
+    "visitsSummary": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "派生计算；输入区域见derivedFrom指向的来源数据集",
+      "period": "visits7d",
+      "scope": "访问次数和人日合计；不是7天去重人数",
+      "fields": {
+        "pv7dTotal": {
+          "type": "integer",
+          "description": "7天访问次数合计。",
+          "unit": "次",
+          "formula": "sum(visitsDaily.pv)",
+          "aggregation": "none",
+          "charts": [
+            "kpi"
+          ]
+        },
+        "uvPersonDays": {
+          "type": "integer",
+          "description": "每日UV之和；重复用户可在多日出现，不能叫独立访客数。",
+          "unit": "人日",
+          "formula": "sum(visitsDaily.uv)",
+          "aggregation": "none",
+          "charts": [
+            "kpi",
+            "audit"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "all",
+          "pv7dTotal": 39460,
+          "uvPersonDays": 9569,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "visits7d",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/0/pv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/0/uv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/1/pv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/1/uv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/2/pv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/2/uv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/3/pv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/3/uv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/4/pv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/4/uv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/5/pv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/5/uv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/6/pv",
+            "data/smart-campus.source.json#/datasets/visitsDaily/rows/6/uv"
+          ]
+        }
+      ]
+    },
+    "categorySharesWxj1": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "派生计算；输入区域见derivedFrom指向的来源数据集",
+      "period": "snapshot",
+      "scope": "该截图分类口径内的占比；四舍五入后百分数不强制凑100",
+      "fields": {
+        "sharePct": {
+          "type": "number",
+          "description": "该类别占本截图39个学校/机构的比例。",
+          "unit": "%",
+          "formula": "roundHalfUp(schoolCategoriesWxj1.count / overview.schoolCount * 100, 2)",
+          "aggregation": "none",
+          "charts": [
+            "bar",
+            "donut"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "kindergarten",
+          "rawLabel": "幼儿园",
+          "sharePct": 15.38,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/0/count",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "primary",
+          "rawLabel": "小学",
+          "sharePct": 48.72,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/1/count",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "junior",
+          "rawLabel": "初中",
+          "sharePct": 28.21,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/2/count",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "senior",
+          "rawLabel": "高中",
+          "sharePct": 2.56,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/3/count",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "college",
+          "rawLabel": "大中专",
+          "sharePct": 0.0,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/4/count",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "bureau",
+          "rawLabel": "局机关",
+          "sharePct": 2.56,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/5/count",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "special",
+          "rawLabel": "特殊学校",
+          "sharePct": 2.56,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj1/rows/6/count",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        }
+      ]
+    },
+    "categorySharesWxj3": {
+      "source": [
+        "wxj3"
+      ],
+      "region": "派生计算；输入区域见derivedFrom指向的来源数据集",
+      "period": "snapshot",
+      "scope": "该截图分类口径内的占比；四舍五入后百分数不强制凑100",
+      "fields": {
+        "sharePct": {
+          "type": "number",
+          "description": "该类别占本截图39个学校/机构的比例。",
+          "unit": "%",
+          "formula": "roundHalfUp(schoolCategoriesWxj3.count / overviewWxj3.schoolCount * 100, 2)",
+          "aggregation": "none",
+          "charts": [
+            "bar",
+            "donut"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "kindergarten",
+          "rawLabel": "幼儿园",
+          "sharePct": 15.38,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj3"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/0/count",
+            "data/smart-campus.source.json#/datasets/overviewWxj3/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "primary",
+          "rawLabel": "小学",
+          "sharePct": 48.72,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj3"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/1/count",
+            "data/smart-campus.source.json#/datasets/overviewWxj3/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "junior",
+          "rawLabel": "初中",
+          "sharePct": 20.51,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj3"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/2/count",
+            "data/smart-campus.source.json#/datasets/overviewWxj3/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "bureau",
+          "rawLabel": "局机关",
+          "sharePct": 2.56,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj3"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/3/count",
+            "data/smart-campus.source.json#/datasets/overviewWxj3/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "special",
+          "rawLabel": "特殊学校",
+          "sharePct": 2.56,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj3"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/4/count",
+            "data/smart-campus.source.json#/datasets/overviewWxj3/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "nineYear",
+          "rawLabel": "九年制",
+          "sharePct": 7.69,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj3"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/5/count",
+            "data/smart-campus.source.json#/datasets/overviewWxj3/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "twelveYear",
+          "rawLabel": "十二年制",
+          "sharePct": 2.56,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj3"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/schoolCategoriesWxj3/rows/6/count",
+            "data/smart-campus.source.json#/datasets/overviewWxj3/rows/0/schoolCount"
+          ]
+        }
+      ]
+    },
+    "moduleCoverage": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "派生计算；输入区域见derivedFrom指向的来源数据集",
+      "period": "snapshot",
+      "scope": "按图示安装数/39估算安装覆盖；不是应用使用率，且不确认适用机构范围",
+      "fields": {
+        "coveragePct": {
+          "type": "number",
+          "description": "模块安装覆盖率（平台学校/机构基数口径）。",
+          "unit": "%",
+          "formula": "roundHalfUp(moduleInstallations.installedSchools / overview.schoolCount * 100, 2)",
+          "aggregation": "none",
+          "charts": [
+            "bar",
+            "table"
+          ]
+        },
+        "notInstalledSchools": {
+          "type": "integer",
+          "description": "按同一平台基数相减的未安装数量，不推断具体学校。",
+          "unit": "个学校/机构",
+          "formula": "overview.schoolCount - moduleInstallations.installedSchools",
+          "aggregation": "none",
+          "charts": [
+            "table"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "notice",
+          "rawLabel": "通知公告",
+          "coveragePct": 87.18,
+          "notInstalledSchools": 5,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/0/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "questionnaire",
+          "rawLabel": "问卷",
+          "coveragePct": 71.79,
+          "notInstalledSchools": 11,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/1/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "term",
+          "rawLabel": "学期管理",
+          "coveragePct": 69.23,
+          "notInstalledSchools": 12,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/2/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "salary",
+          "rawLabel": "工资管理",
+          "coveragePct": 69.23,
+          "notInstalledSchools": 12,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/3/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "repair",
+          "rawLabel": "报修",
+          "coveragePct": 66.67,
+          "notInstalledSchools": 13,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/4/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "organization",
+          "rawLabel": "用户组织",
+          "coveragePct": 64.1,
+          "notInstalledSchools": 14,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/5/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "studentLeave",
+          "rawLabel": "学生请假",
+          "coveragePct": 61.54,
+          "notInstalledSchools": 15,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/6/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "teacherLeaveV3",
+          "rawLabel": "老师请假版本三",
+          "coveragePct": 51.28,
+          "notInstalledSchools": 19,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/7/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "districtQuestionnaire",
+          "rawLabel": "区问卷插件",
+          "coveragePct": 48.72,
+          "notInstalledSchools": 20,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/8/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "schoolCurriculum",
+          "rawLabel": "校本课程平台",
+          "coveragePct": 43.59,
+          "notInstalledSchools": 22,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/9/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "leadership",
+          "rawLabel": "领导看板",
+          "coveragePct": 43.59,
+          "notInstalledSchools": 22,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/10/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "attendanceV1",
+          "rawLabel": "考勤（版本一）",
+          "coveragePct": 41.03,
+          "notInstalledSchools": 23,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/11/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        },
+        {
+          "id": "dutyInspectionV2",
+          "rawLabel": "护导检查版本二",
+          "coveragePct": 41.03,
+          "notInstalledSchools": 23,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/12/installedSchools",
+            "data/smart-campus.source.json#/datasets/overview/rows/0/schoolCount"
+          ]
+        }
+      ]
+    },
+    "moduleSummary": {
+      "source": [
+        "wxj1"
+      ],
+      "region": "派生计算；输入区域见derivedFrom指向的来源数据集",
+      "period": "snapshot",
+      "scope": "仅可见13模块的统计，不代表平台全部模块或去重安装学校数",
+      "fields": {
+        "visibleModuleCount": {
+          "type": "integer",
+          "description": "当前截图可见模块数量。",
+          "unit": "个模块",
+          "formula": "len(moduleInstallations.rows)",
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        },
+        "visibleInstallationPairs": {
+          "type": "integer",
+          "description": "可见学校/机构-模块安装数之和，同一学校可在多模块重复计入。",
+          "unit": "学校/机构-模块安装对",
+          "formula": "sum(moduleInstallations.installedSchools)",
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "visible",
+          "visibleModuleCount": 13,
+          "visibleInstallationPairs": 296,
+          "dataStatus": "derived",
+          "confidence": "high",
+          "isSimulated": false,
+          "source": [
+            "wxj1"
+          ],
+          "period": "snapshot",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/0/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/1/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/2/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/3/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/4/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/5/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/6/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/7/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/8/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/9/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/10/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/11/installedSchools",
+            "data/smart-campus.source.json#/datasets/moduleInstallations/rows/12/installedSchools"
+          ]
+        }
+      ]
+    },
+    "leaveReconciliation": {
+      "source": [
+        "wxj2"
+      ],
+      "region": "派生计算；输入区域见derivedFrom指向的来源数据集",
+      "period": "leave30d",
+      "scope": "保留汇总与日点值的差异，不配平、不假定唯一人数或累计人次",
+      "fields": {
+        "dailyPointSum": {
+          "type": "integer",
+          "description": "30天曲线点值之和，仅作核对。",
+          "unit": "日点值之和（非累计人次）",
+          "formula": "sum(leaveDaily[role])",
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        },
+        "pointSumMinusDisplayedPeople": {
+          "type": "integer",
+          "description": "曲线点值总和减文字显示人数的数值差，非业务人数指标。",
+          "unit": "数值差（口径不同）",
+          "formula": "sum(leaveDaily[role]) - leaveSummary[role + 'People']",
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ],
+          "allowNegative": true
+        },
+        "visibleSchoolPeopleSum": {
+          "type": "integer",
+          "description": "4行可见学校的人数列之和，不能当作全区总数。",
+          "unit": "人（可见表格列之和）",
+          "formula": "sum(leaveSchools[role + 'People'])",
+          "aggregation": "none",
+          "charts": [
+            "audit"
+          ]
+        }
+      },
+      "rows": [
+        {
+          "id": "teacher",
+          "rawLabel": "教师",
+          "note": "仅作数值对账；日点值总和与显示人数口径不同，差额不是漏报人数，也不是累计人次。",
+          "dailyPointSum": 995,
+          "pointSumMinusDisplayedPeople": 540,
+          "visibleSchoolPeopleSum": 252,
+          "dataStatus": "derived",
+          "confidence": "medium",
+          "isSimulated": false,
+          "source": [
+            "wxj2"
+          ],
+          "period": "leave30d",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/0/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/1/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/2/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/3/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/4/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/5/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/6/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/7/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/8/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/9/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/10/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/11/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/12/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/13/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/14/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/15/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/16/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/17/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/18/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/19/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/20/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/21/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/22/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/23/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/24/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/25/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/26/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/27/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/28/teacher",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/29/teacher",
+            "data/smart-campus.source.json#/datasets/leaveSummary/rows/0/teacherPeople",
+            "data/smart-campus.source.json#/datasets/leaveSchools/rows/0/teacherPeople",
+            "data/smart-campus.source.json#/datasets/leaveSchools/rows/1/teacherPeople",
+            "data/smart-campus.source.json#/datasets/leaveSchools/rows/2/teacherPeople",
+            "data/smart-campus.source.json#/datasets/leaveSchools/rows/3/teacherPeople"
+          ]
+        },
+        {
+          "id": "student",
+          "rawLabel": "学生",
+          "note": "仅作数值对账；日点值总和与显示人数口径不同，差额不是漏报人数，也不是累计人次。",
+          "dailyPointSum": 810,
+          "pointSumMinusDisplayedPeople": 392,
+          "visibleSchoolPeopleSum": 15,
+          "dataStatus": "derived",
+          "confidence": "medium",
+          "isSimulated": false,
+          "source": [
+            "wxj2"
+          ],
+          "period": "leave30d",
+          "region": "派生计算；输入区域见derivedFrom",
+          "derivedFrom": [
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/0/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/1/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/2/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/3/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/4/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/5/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/6/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/7/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/8/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/9/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/10/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/11/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/12/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/13/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/14/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/15/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/16/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/17/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/18/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/19/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/20/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/21/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/22/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/23/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/24/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/25/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/26/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/27/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/28/student",
+            "data/smart-campus.source.json#/datasets/leaveDaily/rows/29/student",
+            "data/smart-campus.source.json#/datasets/leaveSummary/rows/0/studentPeople",
+            "data/smart-campus.source.json#/datasets/leaveSchools/rows/0/studentPeople",
+            "data/smart-campus.source.json#/datasets/leaveSchools/rows/1/studentPeople",
+            "data/smart-campus.source.json#/datasets/leaveSchools/rows/2/studentPeople",
+            "data/smart-campus.source.json#/datasets/leaveSchools/rows/3/studentPeople"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "imageryZoom": 16,
+  "terrainZoom": 13,
+  "bbox": [
+    118.65325,
+    31.955862,
+    118.768467,
+    32.092952
+  ],
+  "elevationMin": -75.0,
+  "elevationMax": 90.0,
+  "reliefWorldUnits": 0.495,
+  "exaggeration": 3.0,
+  "sources": [
+    "Esri World Imagery",
+    "AWS Terrarium"
+  ]
+}

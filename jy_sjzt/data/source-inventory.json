@@ -1,0 +1,545 @@
+{
+  "generatedAt": "2026-10-15",
+  "district": "建邺区",
+  "note": "三库导入核对后的表清单与行数；原始 SQL 备份因体积与敏感字段不进入仓库。",
+  "databases": {
+    "u_st": {
+      "dumpFile": "u_st.sql",
+      "dumpBytes": 96637732,
+      "tableCount": 36,
+      "totalRows": 451883,
+      "importVerified": true,
+      "tables": {
+        "st_aizhty_project": {
+          "rows": 98,
+          "usedIn": [
+            "lookup"
+          ],
+          "used": true
+        },
+        "st_aizhty_school_grade_list": {
+          "rows": 7,
+          "usedIn": [],
+          "used": false
+        },
+        "st_aizhty_sport_result": {
+          "rows": 18562,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "st_aizhty_student_info": {
+          "rows": 529,
+          "usedIn": [],
+          "used": false
+        },
+        "st_wyydzhty_assessment": {
+          "rows": 20765,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "st_wyydzhty_enum": {
+          "rows": 43,
+          "usedIn": [],
+          "used": false
+        },
+        "st_wyydzhty_runner": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "st_xsry_honor_config": {
+          "rows": 96,
+          "usedIn": [],
+          "used": false
+        },
+        "st_xsry_honor_title": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "st_xsry_student_honor": {
+          "rows": 156,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "t_jyjyw_column": {
+          "rows": 4596,
+          "usedIn": [],
+          "used": false
+        },
+        "t_jyjyw_site": {
+          "rows": 55,
+          "usedIn": [],
+          "used": false
+        },
+        "t_wyyd_zhty_student_scores": {
+          "rows": 406824,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "t_znyxpt_behavior": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_behavior_percent": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_behavior_time": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_class": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_course_type": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_curve_data": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_device": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_expression": {
+          "rows": 152,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_famous_teacher": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_knowledge": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_live_course": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_live_course_count": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_rtch": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_school": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_st_analysis": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_st_time": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_student": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_subject": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_subject_count": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_teacher": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_teaching_research": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_term": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "t_znyxpt_video_resource": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        }
+      }
+    },
+    "u_st_jkxt": {
+      "dumpFile": "u_st_jkxt.sql",
+      "dumpBytes": 103847004,
+      "tableCount": 19,
+      "totalRows": 275196,
+      "importVerified": true,
+      "tables": {
+        "c_course": {
+          "rows": 2449,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "c_grade": {
+          "rows": 14,
+          "usedIn": [
+            "lookup"
+          ],
+          "used": true
+        },
+        "c_lesson": {
+          "rows": 3300,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "c_mycourse": {
+          "rows": 14150,
+          "usedIn": [],
+          "used": false
+        },
+        "c_mylesson": {
+          "rows": 14062,
+          "usedIn": [],
+          "used": false
+        },
+        "c_mynotes": {
+          "rows": 6089,
+          "usedIn": [],
+          "used": false
+        },
+        "c_myquestion": {
+          "rows": 6528,
+          "usedIn": [],
+          "used": false
+        },
+        "c_section": {
+          "rows": 76,
+          "usedIn": [],
+          "used": false
+        },
+        "c_subject": {
+          "rows": 18,
+          "usedIn": [
+            "lookup"
+          ],
+          "used": true
+        },
+        "jdts_classinfo": {
+          "rows": 1887,
+          "usedIn": [
+            "main",
+            "dimensions"
+          ],
+          "used": true
+        },
+        "jdts_infodic": {
+          "rows": 47,
+          "usedIn": [
+            "lookup"
+          ],
+          "used": true
+        },
+        "jdts_infodicitem": {
+          "rows": 859,
+          "usedIn": [
+            "lookup"
+          ],
+          "used": true
+        },
+        "jdts_js": {
+          "rows": 11468,
+          "usedIn": [
+            "main",
+            "dimensions"
+          ],
+          "used": true
+        },
+        "jdts_jsclassroom": {
+          "rows": 4407,
+          "usedIn": [],
+          "used": false
+        },
+        "jdts_organization": {
+          "rows": 123,
+          "usedIn": [
+            "main",
+            "lookup"
+          ],
+          "used": true
+        },
+        "jdts_organizationcategory": {
+          "rows": 18,
+          "usedIn": [
+            "main",
+            "lookup"
+          ],
+          "used": true
+        },
+        "jdts_organizationtype": {
+          "rows": 5,
+          "usedIn": [
+            "main",
+            "lookup"
+          ],
+          "used": true
+        },
+        "jdts_xs": {
+          "rows": 93572,
+          "usedIn": [
+            "main",
+            "dimensions"
+          ],
+          "used": true
+        },
+        "user": {
+          "rows": 116124,
+          "usedIn": [],
+          "used": false
+        }
+      }
+    },
+    "u_st_wyxt": {
+      "dumpFile": "u_st_wyxt.sql",
+      "dumpBytes": 3629569538,
+      "tableCount": 36,
+      "totalRows": 2697439,
+      "importVerified": true,
+      "tables": {
+        "dm_zlcx_zlrwjckbzd_dv": {
+          "rows": 1010,
+          "usedIn": [],
+          "used": false
+        },
+        "jbzt_weiyan_index": {
+          "rows": 30,
+          "usedIn": [],
+          "used": false
+        },
+        "jbzt_weiyan_teacher_data": {
+          "rows": 0,
+          "usedIn": [],
+          "used": false
+        },
+        "jbzt_weiyan_teacher_index": {
+          "rows": 30,
+          "usedIn": [],
+          "used": false
+        },
+        "v_assessment_project_judge_range_jy": {
+          "rows": 3265,
+          "usedIn": [],
+          "used": false
+        },
+        "v_assessment_project_jy": {
+          "rows": 54,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "v_assessment_project_report_jy": {
+          "rows": 1705,
+          "usedIn": [],
+          "used": false
+        },
+        "v_assessment_project_result_jy": {
+          "rows": 22950,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "v_bulletin_jy": {
+          "rows": 4781,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "v_bulletin_transmit_jy": {
+          "rows": 251245,
+          "usedIn": [],
+          "used": false
+        },
+        "v_bulletin_transmit_user_jy": {
+          "rows": 1183141,
+          "usedIn": [],
+          "used": false
+        },
+        "v_certificate_jy": {
+          "rows": 60793,
+          "usedIn": [],
+          "used": false
+        },
+        "v_disease_report_jy": {
+          "rows": 9994,
+          "usedIn": [],
+          "used": false
+        },
+        "v_disease_school_statistics_jy": {
+          "rows": 249571,
+          "usedIn": [],
+          "used": false
+        },
+        "v_document_flow_jy": {
+          "rows": 301,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "v_document_flow_receive_jy": {
+          "rows": 10079,
+          "usedIn": [],
+          "used": false
+        },
+        "v_duty_batch_jy": {
+          "rows": 22,
+          "usedIn": [],
+          "used": false
+        },
+        "v_duty_batch_unit_jy": {
+          "rows": 2082,
+          "usedIn": [],
+          "used": false
+        },
+        "v_employee_salaries_jy": {
+          "rows": 825,
+          "usedIn": [],
+          "used": false
+        },
+        "v_important_and_great_jsfz_jy": {
+          "rows": 1900,
+          "usedIn": [],
+          "used": false
+        },
+        "v_important_and_great_jy": {
+          "rows": 5215,
+          "usedIn": [],
+          "used": false
+        },
+        "v_jy_certificate_jy": {
+          "rows": 50566,
+          "usedIn": [],
+          "used": false
+        },
+        "v_leader_leave_jy": {
+          "rows": 1616,
+          "usedIn": [],
+          "used": false
+        },
+        "v_lecture_record_jy": {
+          "rows": 600,
+          "usedIn": [],
+          "used": false
+        },
+        "v_month_work_jy": {
+          "rows": 1683,
+          "usedIn": [],
+          "used": false
+        },
+        "v_month_work_summary_jy": {
+          "rows": 114,
+          "usedIn": [],
+          "used": false
+        },
+        "v_oa_education_plan_agent_jy": {
+          "rows": 13863,
+          "usedIn": [],
+          "used": false
+        },
+        "v_oa_education_plan_jy": {
+          "rows": 5949,
+          "usedIn": [
+            "main"
+          ],
+          "used": true
+        },
+        "v_oa_education_plan_sign_record_jy": {
+          "rows": 800491,
+          "usedIn": [
+            "main"
+          ],
+          "used": true
+        },
+        "v_special_apply_jy": {
+          "rows": 107,
+          "usedIn": [],
+          "used": false
+        },
+        "v_supervision_record_jy": {
+          "rows": 3107,
+          "usedIn": [
+            "main"
+          ],
+          "used": true
+        },
+        "v_supervision_type_jy": {
+          "rows": 14,
+          "usedIn": [],
+          "used": false
+        },
+        "v_tech_stud_activity_jy": {
+          "rows": 6595,
+          "usedIn": [],
+          "used": false
+        },
+        "v_triple_review_jy": {
+          "rows": 1655,
+          "usedIn": [
+            "dimensions"
+          ],
+          "used": true
+        },
+        "v_week_day_schedule_jy": {
+          "rows": 225,
+          "usedIn": [],
+          "used": false
+        },
+        "v_week_day_schedule_report_jy": {
+          "rows": 1861,
+          "usedIn": [],
+          "used": false
+        }
+      }
+    }
+  }
+}

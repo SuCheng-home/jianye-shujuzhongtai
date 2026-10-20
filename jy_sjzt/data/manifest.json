@@ -1,0 +1,320 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-20T10:39:29+08:00",
+  "district": {
+    "name": "建邺区",
+    "adcode": 320105
+  },
+  "isSimulated": false,
+  "note": "本清单只描述 data/ 内的派生数据；原始 SQL 备份、构建产物与未引用素材不进入仓库。",
+  "sources": {
+    "databases": 3,
+    "tables": 91,
+    "usedTables": 25,
+    "rows": 3424518,
+    "rawDumpsInRepo": false,
+    "note": "三库导入核对后的表清单与行数；原始 SQL 备份因体积与敏感字段不进入仓库。"
+  },
+  "files": [
+    {
+      "path": "data/jianye-overview.generated.json",
+      "bytes": 42622,
+      "sha256": "48a7a3ad722f7274fef6b60456438d2a4c745473b1aac673ceabc42477485b22",
+      "role": "屏幕运行时汇总",
+      "generator": "scripts/build-jianye-data.py",
+      "consumers": "lib/jianye-data.ts → 总览 / 应用运营 / 应用使用页",
+      "description": "学校名录、师生基数、研训与视导学期汇总"
+    },
+    {
+      "path": "data/jianye.generated.json",
+      "bytes": 2728717,
+      "sha256": "6a893bbb4c2782683517f54bd4bad9a8edb6904b76933e6f9d8d0e78d58fa046",
+      "role": "生成用主快照",
+      "generator": "scripts/build-jianye-data.py",
+      "consumers": "scripts/build-jianye-dimensions.py、scripts/build-jianye-training.mjs",
+      "description": "研训活动与视导记录的全量聚合明细"
+    },
+    {
+      "path": "data/jianye-dimensions.generated.json",
+      "bytes": 2169524,
+      "sha256": "4ac0d2c48bea1170575d1a15e54de342be5fd8b9b053c019a1834e078d192d6c",
+      "role": "离线维度快照",
+      "generator": "scripts/build-jianye-dimensions.py",
+      "consumers": "离线分析与补数；不进入首页 JS 包",
+      "description": "103 个按来源表拆分的维度数据集"
+    },
+    {
+      "path": "data/jianye-map.json",
+      "bytes": 3632,
+      "sha256": "f0cddcdf287d0b209b58ae75867e5ed5bac4aef6596cb26bb77c3943a92df519",
+      "role": "地图区界",
+      "generator": "scripts/build-jianye-terrain.py 沿用",
+      "consumers": "lib/education-map.ts",
+      "description": "建邺区 GeoJSON 边界（DataV GeoAtlas 320105）"
+    },
+    {
+      "path": "data/jianye-school-points.json",
+      "bytes": 5493,
+      "sha256": "b451100aa84b181fc70b3b8c5256bf753f37307357532864567d16aca40c204f",
+      "role": "地图校点",
+      "generator": "人工核准 + 公开地图核对",
+      "consumers": "lib/education-map.ts",
+      "description": "学校统一代码 → WGS84 经纬度；未核准学校不上图"
+    },
+    {
+      "path": "data/jianye-terrain-meta.json",
+      "bytes": 288,
+      "sha256": "048fc6943fa2d5fa0f499f04c923f031e2bb96e8de12bea2ac9edc2be3a9e2c5",
+      "role": "地形元数据",
+      "generator": "scripts/build-jianye-terrain.py",
+      "consumers": "lib/education-map.ts",
+      "description": "卫星影像与 DEM 的裁切范围、高程区间和竖向夸张"
+    },
+    {
+      "path": "data/smart-campus.generated.json",
+      "bytes": 109691,
+      "sha256": "22ccd36ae5f8b35eb9af465055ae54a8941e547064923f0bed5b2e05e5f20757",
+      "role": "屏幕运行时截图数据",
+      "generator": "scripts/build-smart-campus-data.py",
+      "consumers": "lib/smart-campus-data.ts → 应用运营 / 应用使用页",
+      "description": "智慧校园平台三张截图的可读值、派生值与缺口"
+    },
+    {
+      "path": "data/smart-campus.source.json",
+      "bytes": 34889,
+      "sha256": "84a81eb1ca2e68195fa2711f35d6ed36a52d96193ad5df8d1258950d7090cd8e",
+      "role": "截图人工录入源",
+      "generator": "人工核对截图",
+      "consumers": "scripts/build-smart-campus-data.py",
+      "description": "截图读数、置信度与来源区域，供生成脚本使用"
+    },
+    {
+      "path": "data/source-inventory.json",
+      "bytes": 12186,
+      "sha256": "53058e342e7d4eb471e3e19b02783bffa7851b4625ecb3df36684c7d8bed57ab",
+      "role": "原始库表清单",
+      "generator": "三库导入核对",
+      "consumers": "数据说明与补数范围确认",
+      "description": "三库全部 91 张表的行数与大屏使用标记；不含原始数据"
+    }
+  ],
+  "datasets": {
+    "total": 103,
+    "byStatus": {
+      "mysql_dump": 89,
+      "derived": 14
+    },
+    "bySourceTable": [
+      {
+        "sourceTable": "u_st.t_wyyd_zhty_student_scores",
+        "datasets": 5,
+        "records": 2034120,
+        "exampleKeys": [
+          "t_wyyd_zhty_student_scores.byProject",
+          "t_wyyd_zhty_student_scores.byMonth",
+          "t_wyyd_zhty_student_scores.projectMonth"
+        ]
+      },
+      {
+        "sourceTable": "u_st_jkxt.jdts_xs",
+        "datasets": 6,
+        "records": 266844,
+        "exampleKeys": [
+          "jdts_xs.bySchool",
+          "jdts_xs.byStageCode",
+          "jdts_xs.byGradeCode"
+        ]
+      },
+      {
+        "sourceTable": "u_st.st_aizhty_sport_result",
+        "datasets": 8,
+        "records": 148496,
+        "exampleKeys": [
+          "st_aizhty_sport_result.byTypeCode",
+          "st_aizhty_sport_result.bySchool",
+          "st_aizhty_sport_result.byGrade"
+        ]
+      },
+      {
+        "sourceTable": "u_st.st_wyydzhty_assessment",
+        "datasets": 6,
+        "records": 124590,
+        "exampleKeys": [
+          "st_wyydzhty_assessment.bySchoolId",
+          "st_wyydzhty_assessment.byGrade",
+          "st_wyydzhty_assessment.byProjectId"
+        ]
+      },
+      {
+        "sourceTable": "u_st_wyxt.v_assessment_project_result_jy",
+        "datasets": 4,
+        "records": 91800,
+        "exampleKeys": [
+          "v_assessment_project_result_jy.byReviewTypeCode",
+          "v_assessment_project_result_jy.byResultCode",
+          "v_assessment_project_result_jy.byItemTypeCode"
+        ]
+      },
+      {
+        "sourceTable": "u_st_jkxt.jdts_js",
+        "datasets": 9,
+        "records": 67014,
+        "exampleKeys": [
+          "jdts_js.bySchool",
+          "jdts_js.byGenderCode",
+          "jdts_js.bySubject"
+        ]
+      },
+      {
+        "sourceTable": "data/jianye.generated.json#training",
+        "datasets": 7,
+        "records": 39351,
+        "exampleKeys": [
+          "training.term",
+          "training.termMonth",
+          "training.termWeek"
+        ]
+      },
+      {
+        "sourceTable": "u_st_wyxt.v_bulletin_jy",
+        "datasets": 7,
+        "records": 33467,
+        "exampleKeys": [
+          "v_bulletin_jy.byTypeCode",
+          "v_bulletin_jy.byStatus",
+          "v_bulletin_jy.byDeleteFlag"
+        ]
+      },
+      {
+        "sourceTable": "data/jianye.generated.json#supervision",
+        "datasets": 7,
+        "records": 21252,
+        "exampleKeys": [
+          "supervision.termType",
+          "supervision.termMonth",
+          "supervision.termStage"
+        ]
+      },
+      {
+        "sourceTable": "u_st_jkxt.c_course",
+        "datasets": 7,
+        "records": 17143,
+        "exampleKeys": [
+          "c_course.bySubject",
+          "c_course.byGrade",
+          "c_course.byStatusCode"
+        ]
+      },
+      {
+        "sourceTable": "u_st_wyxt.v_triple_review_jy",
+        "datasets": 8,
+        "records": 13240,
+        "exampleKeys": [
+          "v_triple_review_jy.byApp",
+          "v_triple_review_jy.byForm",
+          "v_triple_review_jy.byNodeType"
+        ]
+      },
+      {
+        "sourceTable": "u_st_jkxt.c_lesson",
+        "datasets": 4,
+        "records": 13200,
+        "exampleKeys": [
+          "c_lesson.byTypeCode",
+          "c_lesson.byVideoStatusCode",
+          "c_lesson.byStatusCode"
+        ]
+      },
+      {
+        "sourceTable": "u_st_jkxt.jdts_classinfo",
+        "datasets": 5,
+        "records": 9435,
+        "exampleKeys": [
+          "jdts_classinfo.bySchool",
+          "jdts_classinfo.byStageCode",
+          "jdts_classinfo.byGradeCode"
+        ]
+      },
+      {
+        "sourceTable": "u_st_wyxt.v_document_flow_jy",
+        "datasets": 6,
+        "records": 1254,
+        "exampleKeys": [
+          "v_document_flow_jy.byUnit",
+          "v_document_flow_jy.byDepartment",
+          "v_document_flow_jy.byStatus"
+        ]
+      },
+      {
+        "sourceTable": "u_st.st_xsry_student_honor",
+        "datasets": 8,
+        "records": 1248,
+        "exampleKeys": [
+          "st_xsry_student_honor.bySchool",
+          "st_xsry_student_honor.byGrade",
+          "st_xsry_student_honor.byHonorLevel"
+        ]
+      },
+      {
+        "sourceTable": "u_st_wyxt.v_assessment_project_jy",
+        "datasets": 6,
+        "records": 84,
+        "exampleKeys": [
+          "v_assessment_project_jy.byCategory",
+          "v_assessment_project_jy.byLevelCode",
+          "v_assessment_project_jy.byReportTypeCode"
+        ]
+      }
+    ]
+  },
+  "smartCampus": {
+    "datasets": 21,
+    "screenshots": [
+      "wxj1.png",
+      "wxj2.png",
+      "wxj3.png"
+    ],
+    "simulated": false,
+    "gaps": [
+      "role-values-not-shown",
+      "period-uv-not-shown",
+      "partial-module-window",
+      "partial-school-table",
+      "partial-activity-window",
+      "snapshot-time-unknown"
+    ],
+    "uncertainties": [
+      "classification-scope",
+      "leave-count-definition",
+      "leave-zero-baseline",
+      "growth-followers-scale",
+      "activity-labels-clipped",
+      "pv-third-verified",
+      "module-coverage-assumption"
+    ]
+  },
+  "runtimeGaps": [
+    "教育协同本版尚未聚合，快照中为 null；源库已有可用表（v_bulletin_jy / v_bulletin_transmit_jy / v_bulletin_transmit_user_jy / v_triple_review_jy / v_document_flow_jy），下一版按同样口径接入。",
+    "体育与成长本版尚未聚合，快照中为 null；源库已有可用表（u_st.st_aizhty_* / st_wyydzhty_assessment / t_wyyd_zhty_student_scores / st_xsry_student_honor），下一版按同样口径接入。",
+    "师生基数为当前时点快照，无历史学期名册；历史学期的参与率分母不可靠，一律留空。",
+    "一贯制学校（小学&初中、小学&初中&高中）的师生无法按学段拆分，学段维度的教师基数待业务补充。",
+    "最新学期「2026-2027学年第一学期」只有活动安排、没有签到记录，默认学期改取「2025-2026-2」；下拉里选中最新学期时，出勤率与教师参与率按原版空态显示「—」。",
+    "教师参与率分母（各学期应参训教师基数）源库不存在，按方案「没有可靠基数不出数」留空。",
+    "只有部分活动开启了签到：应到人次与平均出勤率的分母仅覆盖有签到记录的活动，不是全部活动；各学期覆盖场次见 kpi.activitiesWithSignData，页面须在悬浮提示里写明该口径。",
+    "「未参与研训教师」按学段拆分需要学段维度的教师基数，源库不存在，保留原版模块并显示「—」。",
+    "部分活动 period（学时）为 0 或空，总学时按已填学时合计，缺填场次单独计数不估算。",
+    "本地三库无应用目录、无「学校×应用×日期」使用人数、无平台整体日活、无学生/教师/家长关注数据；应用运营各模块保留完整位置，数值为 null，等接口或 JSON/Excel 导出后接入。",
+    "视导评级在建邺是「优秀/良好/合格/不合格」，与玄武原版的 A/B/C 课不同构；按用户确认，原版「A课率」位置改按真实评级构成展示，不折算成单一 A 课率。",
+    "综合督导、专项督导在三库中无记录（v_supervision_type_jy 里定义了类型但没有数据）；v_assessment_project_jy 实为教师评比项目（教坛新秀、区优青、能级认定等），不是学校督导，不能挪用。",
+    "满意度（教师/学生/家长）数据在三库中不存在；原版满意度总体分析与题目分析（含家长维度）保留模块、数值留「—」。",
+    "综合督导问题数、待解决数、整改状态无数据源，原版问题统计板块保留并留「—」。",
+    "v_supervision_record_jy.subject_name 存的是课题/课名（如「黄继光」「Road safety」），不是学科；学科维度需业务确认改用哪个字段，暂不按学科出图。",
+    "v_supervision_record_jy.th_unit_code 是 UUID，与 jdts_organization.Code（320105…）不同体系，视导学校无法直接关联学校名录；jianye_dashboard.dim_school_mapping 是空表。校级联动需要先建这份映射，当前按 th_unit_name 原样展示。"
+  ],
+  "dataStatus": {
+    "generated": "由脚本从源库或人工核对数据生成，页面对应数值不再手改。",
+    "derived": "按已声明公式派生；不覆盖原始读数。",
+    "simulated": "演示值必须在页面逐处标注；本清单文件本身不含模拟数据。",
+    "missing": "源数据未提供时保留 null，页面显示「—」，不以 0 代替。"
+  }
+}

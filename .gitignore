@@ -1,0 +1,41 @@
+# 原始数据与导入备份（体积大，且含证件/工资/健康等敏感字段）
+/data/
+/mysql-backups/
+/教师视导/
+/智慧校园/
+
+# 依赖与构建产物
+**/node_modules/
+**/.next/
+**/out/
+**/dist/
+**/*.tsbuildinfo
+*.log
+
+# 系统与本地配置
+**/.DS_Store
+.env
+.env*.local
+.vercel/
+
+# 未引用的历史素材与旧版页面
+/jy_sjzt/public/玄武区研训活动.html
+/jy_sjzt/public/建邺区研训活动.html
+/jy_sjzt/public/xuanwu-robot.js
+/jy_sjzt/public/合成 1_bmp.pag
+**/*.pag
+/jy_sjzt/public/images/scenes/
+/jy_sjzt/public/images/scenes-archive/
+/jy_sjzt/public/images/markers/
+/jy_sjzt/public/images/logos/
+/jy_sjzt/public/images/logos-archive/
+/jy_sjzt/public/images/terrain/
+/jy_sjzt/public/images/map-terrain.png
+/jy_sjzt/public/images/brain.png
+/jy_sjzt/public/images/brain-ai.png
+/jy_sjzt/public/images/xuanwu-map-3d.png
+/jy_sjzt/public/images/xuanwu-map-reference.png
+
+# 编辑器
+.idea/
+.vscode/
