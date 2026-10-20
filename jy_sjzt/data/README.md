@@ -8,7 +8,7 @@
 |---|---:|---|---|---|
 | `jianye-overview.generated.json` | 42 KB | 学校名录、师生基数、研训与视导学期汇总 | `scripts/build-jianye-data.py` | 总览、应用运营、应用使用 |
 | `jianye.generated.json` | 2.7 MB | 研训活动、视导记录的全量聚合明细 | `scripts/build-jianye-data.py` | 生成研训页与扩展维度 |
-| `jianye-dimensions.generated.json` | 2.1 MB | 22 张源表（含 8 张字典/名录表）聚合出的 103 个维度数据集 | `scripts/build-jianye-dimensions.py` | 离线分析；不进入首页 JS 包 |
+| `jianye-dimensions.generated.json` | 2.1 MB | 14 张事实表与 8 张字典/名录表参与聚合，产出 103 个维度数据集 | `scripts/build-jianye-dimensions.py` | 离线分析；不进入首页 JS 包 |
 | `smart-campus.generated.json` | 107 KB | 智慧校园平台三张截图的可读值与派生值（21 个数据集） | `scripts/build-smart-campus-data.py` | 应用运营、应用使用 |
 | `smart-campus.source.json` | 34 KB | 截图人工录入源、置信度与区域坐标 | 人工核对截图 | 生成脚本的输入 |
 | `jianye-map.json` | 3.5 KB | 建邺区 GeoJSON 边界（DataV GeoAtlas 320105） | 地图底图 | 三维地图 |
